@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('/opt/lampp/htdocs/Station/Models/db.php');
+include('/opt/lampp/htdocs/Station-Essence/Models/db.php');
 
 function delete_entree($num_entree)
 {

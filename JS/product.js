@@ -25,7 +25,7 @@ function new_product() {
     if (div) {
         element.removeChild(div);
         element.innerHTML += `
-        <form method='post' action="/Station/Controllers/Produit/nouveau_produit.php" id='new_p_form'>
+        <form method='post' action="/Station-Essence/Controllers/Produit/nouveau_produit.php" id='new_p_form'>
         <input type="text" placeholder="Désignation" name="designation" required="true">
         <input type="submit" value="Ajouter">
     </form>
@@ -45,7 +45,7 @@ function close_new_product() {
 function delete_product(num_prod) {
     showConfirmationPrompt(`Voulez-vous supprimer le produit ${num_prod} ?`, (del) => {
         if (del) {
-            window.location = `/Station/Controllers/Produit/delete_product.php?num_prod=${num_prod}`;
+            window.location = `/Station-Essence/Controllers/Produit/delete_product.php?num_prod=${num_prod}`;
         }
     })
 }
@@ -59,7 +59,7 @@ function update_product(num_prod) {
 
     Design.innerHTML = `<input type="text" id="new_design" Value='${Design.innerText}' style='width:70%;'>`
     Modify.innerHTML = `<button onclick='update("${num_prod}")' style="background-color:#f2df10;color:#28a745; border-radius:0px;">Modifier</button>`
-    Del.innerHTML = `<button onclick='window.location="/Station/?page=produit"' >Annuler</button>`
+    Del.innerHTML = `<button onclick='window.location="/Station-Essence/?page=produit"' >Annuler</button>`
     Container.style.margin = '0px';
 
     a = parseInt(Container.classList[0].split('').reverse().join(''));
@@ -76,5 +76,5 @@ function update_product(num_prod) {
 
 function update(num_prod) {
     design = document.getElementById(`new_design`).value;
-    window.location = `/Station/Controllers/Produit/update_product.php?num_prod=${num_prod}&design=${design}`;
+    window.location = `/Station-Essence/Controllers/Produit/update_product.php?num_prod=${num_prod}&design=${design}`;
 }

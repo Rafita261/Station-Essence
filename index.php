@@ -57,16 +57,16 @@ if (isset($_GET['page'])) {
         <li></li>
     </ul>
     <header>
-        <button class="header" onclick="window.location='/Station/'">Dashboard</button>
-        <button class='header' onclick='window.location="/Station/?page=produit"'>Produits</button>
-        <button class='header' onclick='window.location="/Station/?page=entree"'>Entrée en Stock</button>
-        <button class='header' onclick='window.location="/Station/?page=achat"'>Achat</button>
-        <button class='header'>Service</button>
-        <button class='header'>Entretien</button>
+        <button class="header" onclick="window.location='/Station-Essence/'">Dashboard</button>
+        <button class='header' onclick='window.location="/Station-Essence/?page=produit"'>Produits</button>
+        <button class='header' onclick='window.location="/Station-Essence/?page=entree"'>Entrée en Stock</button>
+        <button class='header' onclick='window.location="/Station-Essence/?page=achat"'>Achat</button>
+        <button class='header' onclick='window.location="/Station-Essence/?page=service"'>Service</button>
+        <button class='header' onclick='window.location="/Station-Essence/?page=entretien"'>Entretien</button>
     </header>
     <div id="body">
         <?php
-        $pages = ["dashboard", "entree", "produit", "achat"];
+        $pages = ["dashboard", "entree", "produit", "achat","service"];
         if (in_array($ELEMENT, $pages)) {
             include('Views/' . $ELEMENT . '.php');
         } else {
@@ -101,11 +101,11 @@ if (isset($_GET['page'])) {
         }
         <?php
         if (isset($_SESSION['success_message'])): ?>
-            showSuccessAlert('<?php echo $_SESSION['success_message']; ?>');
+            showSuccessAlert(`<?php echo $_SESSION['success_message']; ?>`);
             <?php unset($_SESSION['success_message']); ?>
         <?php endif; ?>
         <?php if (isset($_SESSION['error_message'])): ?>
-            showErrorAlert('<?php echo $_SESSION['error_message']; ?>');
+            showErrorAlert(`<?php echo $_SESSION['error_message']; ?>`);
             <?php unset($_SESSION['error_message']); ?>
         <?php endif; ?>
     </script>

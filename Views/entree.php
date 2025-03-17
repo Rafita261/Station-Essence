@@ -1,8 +1,8 @@
 <?php
 session_start();
-include('/opt/lampp/htdocs/Station/Controllers/Entree/list_entree.php'); ?>
-<?php include('/opt/lampp/htdocs/Station/Controllers/Produit/list_produit.php'); ?>
-<h1 style='text-align:center;'>Liste des entrées en stock dans la station</h1>
+include('/opt/lampp/htdocs/Station-Essence/Controllers/Entree/list_entree.php'); ?>
+<?php include('/opt/lampp/htdocs/Station-Essence/Controllers/Produit/list_produit.php'); ?>
+<h1 style='text-align:center;'>Liste des entrées en stock dans la Station-Essence</h1>
 <!-- Listage des produits dans la liste déroulante -->
 <script>
     function get_products() {
@@ -71,4 +71,4 @@ include('/opt/lampp/htdocs/Station/Controllers/Entree/list_entree.php'); ?>
         </th>
     </tr>
 </table>
-<script async defer src="/Station/JS/entree.js"></script>
+<script async defer src="/Station-Essence/JS/entree.js"></script>

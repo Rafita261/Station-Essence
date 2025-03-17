@@ -28,13 +28,13 @@ function new_entree(products) {
         for (elem in products) {
             s += `<option value='${elem}'>${products[elem]}</option>`
         }
-        element.innerHTML += `<form action="/Station/Controllers/Entree/create_entree.php" id='new_e_form'>
+        element.innerHTML += `<form action="/Station-Essence/Controllers/Entree/create_entree.php" id='new_e_form'>
     <select name="product" id="">
         ${s}
     </select>
     <input type="number" name="stock" id="stock_entree" placeholder="Entrée en stock (en litre)" required="true">
     <input type="submit" value="Ajouter">
-    <button onclick='window.location="/Station/?page=entree"' class='annuler'>Annuler</button>
+    <button onclick='window.location="/Station-Essence/?page=entree"' class='annuler'>Annuler</button>
     </form>`
     }
     
@@ -52,7 +52,7 @@ function close_new_entree() {
 function delete_entree(num_entree) {
     showConfirmationPrompt(`Voulez-vous supprimer l' entrée en stock n° ${num_entree} ?`, (del) => {
         if (del) {
-        window.location = `/Station/Controllers/Entree/delete_entree.php?num_entree=${num_entree}`;
+        window.location = `/Station-Essence/Controllers/Entree/delete_entree.php?num_entree=${num_entree}`;
     }
     })
 }
@@ -86,7 +86,7 @@ function update_entree(num_entree) {
     Stock_entree.innerHTML = `<input type="text" id="new_Stock_entree" Value='${Stock_entree.innerText}' style='width:70%;'>`
     Date_entree.innerHTML = `<input type="date" id="new_Date_entree" Value='${date}' style='width:70%;'>`
     Update.innerHTML = `<button onclick='update("${num_entree}")' style="background-color:#f2df10;color:#28a745; border-radius:0px;">Modifier</button>`
-    Del.innerHTML = `<button onclick='window.location="/Station/?page=entree"' >Annuler</button>`
+    Del.innerHTML = `<button onclick='window.location="/Station-Essence/?page=entree"' >Annuler</button>`
 
     a = parseInt(Container.classList[0].split('').reverse().join(''));
     if (a) color = "rgb(179, 205, 226)"
@@ -119,5 +119,5 @@ function update(num_entree) {
     let Date_entree = document.getElementById(`new_Date_entree`).value;
     let num_prod = document.getElementById(`list_prod`).value;
     Date_entree = Date_entree.replace(/\-/g, '/')
-    window.location = `/Station/Controllers/Entree/update_entree.php?num_entree=${num_entree}&stock_entree=${Stock_entree}&date_entree=${Date_entree}&num_prod=${num_prod}`;
+    window.location = `/Station-Essence/Controllers/Entree/update_entree.php?num_entree=${num_entree}&stock_entree=${Stock_entree}&date_entree=${Date_entree}&num_prod=${num_prod}`;
 }

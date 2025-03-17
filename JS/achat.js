@@ -49,7 +49,7 @@ function update_achat(num_achat) {
     Nbr_litre.innerHTML = `<input type="number" id="new_nbr_litre" Value='${Nbr_litre.innerText}' style='width:70%;'>`
     Date_achat.innerHTML = `<input type="date" id="new_Date_achat" Value='${date}' style='width:70%;'>`
     Update.innerHTML = `<button onclick='update("${num_achat}")' style="background-color:#f2df10;color:#28a745; border-radius:0px;">Modifier</button>`
-    Del.innerHTML = `<button onclick='window.location="/Station/?page=achat"' >Annuler</button>`
+    Del.innerHTML = `<button onclick='window.location="/Station-Essence/?page=achat"' >Annuler</button>`
     Update.style.borderRadius = '8px';
 
     a = parseInt(Container.classList[0].split('').reverse().join(''));
@@ -79,13 +79,13 @@ function update(num_achat) {
     date_achat = document.getElementById("new_Date_achat").value;
     nbr_litre = document.getElementById('new_nbr_litre').value;
     date_achat = date_achat.replace(/\-/g, '/');
-    window.location = `/Station/Controllers/Achat/update_achat.php?num_achat=${num_achat}&num_prod=${num_prod}&nom_client=${nom_client}&date_achat=${date_achat}&nbr_litre=${nbr_litre}`;
+    window.location = `/Station-Essence/Controllers/Achat/update_achat.php?num_achat=${num_achat}&num_prod=${num_prod}&nom_client=${nom_client}&date_achat=${date_achat}&nbr_litre=${nbr_litre}`;
 }
 
 function delete_achat(num_achat) {
     showConfirmationPrompt(`Voulez-vous supprimer l' achat n° ${num_achat} ?`, (del) => {
         if (del) {
-            window.location = `/Station/Controllers/Achat/delete_achat.php?num_achat=${num_achat}`;
+            window.location = `/Station-Essence/Controllers/Achat/delete_achat.php?num_achat=${num_achat}`;
         }
     })
 }
@@ -97,7 +97,7 @@ function create_new_achat_form(products) {
     }
 
     document.getElementById('new_achat_btn').innerHTML = `
-    <form class="new_achat_form" method='post' action="/Station/Controllers/Achat/create_achat.php">
+    <form class="new_achat_form" method='post' action="/Station-Essence/Controllers/Achat/create_achat.php">
     <div class="space"><span>Effectuer un nouveau achat</span><svg class='new_fermer_icon' onmouseover='animation_1()' onmouseleave='animation_2()' onclick="fermer()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
         <line class='l1' x1="5" y1="5" x2="19" y2="19"></line>
         <line class='l2' x1="5" y1="19" x2="19" y2="5"></line>    
@@ -117,7 +117,7 @@ function create_new_achat_form(products) {
 }
 
 function fermer() {
-    window.location = '/Station/?page=achat';
+    window.location = '/Station-Essence/?page=achat';
 }
 
 function animation_1() {

@@ -1,5 +1,6 @@
-<?php session_start(); include('/opt/lampp/htdocs/Station/Controllers/Produit/list_produit.php'); ?>
-<h1 style='text-align:center;'>Liste des produits de la station</h1>
+<?php session_start();
+include('/opt/lampp/htdocs/Station-Essence/Controllers/Produit/list_produit.php'); ?>
+<h1 style='text-align:center;'>Liste des produits de la Station-Essence</h1>
 <table>
     <tr>
         <th>Numéro de produit</th>
@@ -43,4 +44,4 @@
         </th>
     </tr>
 </table>
-<script async defer src="/Station/JS/product.js"></script>
+<script async defer src="/Station-Essence/JS/product.js"></script>

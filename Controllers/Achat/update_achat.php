@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('/opt/lampp/htdocs/Station/Models/Achat/update_achat.php');
+include('/opt/lampp/htdocs/Station-Essence/Models/Achat/update_achat.php');
 
 $num_achat = htmlspecialchars($_GET['num_achat']);
 $new_date_achat = htmlspecialchars($_GET['date_achat']);
@@ -16,6 +16,5 @@ try {
 } catch (Exception $e) {
     $_SESSION['error_message'] = "Une erreur s'est produite lors de la mise à jour de l'achat";
 } finally {
-    header('Location: /Station/?page=achat');
+    header('Location: /Station-Essence/?page=achat');
 }
-?>
