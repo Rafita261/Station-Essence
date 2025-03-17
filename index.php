@@ -66,7 +66,7 @@ if (isset($_GET['page'])) {
     </header>
     <div id="body">
         <?php
-        $pages = ["dashboard", "entree", "produit", "achat","service"];
+        $pages = ["dashboard", "entree", "produit", "achat","service", "entretien"];
         if (in_array($ELEMENT, $pages)) {
             include('Views/' . $ELEMENT . '.php');
         } else {

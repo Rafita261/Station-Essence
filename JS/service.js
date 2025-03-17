@@ -70,7 +70,7 @@ function update_service(num_serv) {
         <button onclick='update("${num_serv}")' style="background-color:#f2df10;color:#28a745; border-radius:0px;">Modifier</button>
     `;
     Del.innerHTML = `
-        <button onclick='window.location="/Station-Essence/?page=achat"' >Annuler</button>
+        <button onclick='window.location="/Station-Essence/?page=service"' >Annuler</button>
     `;
     Container.style.margin = '0px';
     Update.style.borderRadius = '8px';
