@@ -17,11 +17,11 @@ This project dynamically includes different PHP pages based on the value of the 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
+    git clone https://github.com/rafita261/Station-Essence.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd your-repo-name
+    cd Station-Essence
     ```
 3. Ensure your web server is configured to serve the project directory.
 
