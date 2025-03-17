@@ -16,7 +16,7 @@ if (isset($_GET['page'])) {
     <title>Gestion de Station Essence</title>
     <link rel="stylesheet" href="./Css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JS/fen.js"></script>
 </head>
 
 <body>
