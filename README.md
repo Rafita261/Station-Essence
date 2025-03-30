@@ -12,6 +12,7 @@ This project dynamically includes different PHP pages based on the value of the 
 - Web server (e.g., Apache, Nginx)
 - MySQL
 - SweetAlert2 library
+- Dompdf
 
 ## Installation
 
@@ -23,7 +24,11 @@ This project dynamically includes different PHP pages based on the value of the 
     ```bash
     cd Station-Essence
     ```
-3. Ensure your web server is configured to serve the project directory.
+3. Install Dompdf
+    ```bash
+    composer require dompdf/dompdf
+    ```
+4. Ensure your web server is configured to serve the project directory.
 
 ## Usage
 
