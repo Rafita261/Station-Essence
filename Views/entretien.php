@@ -1,6 +1,33 @@
 <?php require("/opt/lampp/htdocs/Station-Essence/Controllers/Entretien/list_entretien.php"); ?>
-<h1>Liste des entretiens</h1>
-<table>
+<?php require("/opt/lampp/htdocs/Station-Essence/Controllers/Service/list_service.php"); ?>
+<div style="display: flex;flex-direction:row;">
+    <h1 style="margin-left: 30%">Liste des entretiens</h1>
+    <form method="post" action="/Station-Essence/Controllers/Entretien/list_entretien.php" style="margin-top:20px;margin-right:5px;display:flex;flex-direction:row;background-color:#f4f4f4;"><input type="search" placeholder="Rechercher un client" name="model_nom"><input type="submit" value="Rechercher"></form>
+</div>
+<h2>
+    Récette total accumulé par la station : <?php echo $recette ; ?> Ar
+</h2>
+<script>
+    function get_services() {
+        num_serv = [];
+        services = [];
+        <?php foreach ($services as $service) {
+        ?> num_serv.push('<?php print_r($service[0]); ?>');
+        <?php
+        } ?>
+        <?php foreach ($services as $service) {
+        ?> services.push('<?php print_r($service[1]); ?>');
+        <?php
+        } ?>
+        products = {};
+        for (i in num_serv) {
+            products[num_serv[i]] = services[i];
+        }
+        return products;
+    }
+</script>
+<div id="new_entretien_form"></div>
+<table id="table_entretien">
     <thead>
         <tr>
             <th>Numéro de entretien</th>
@@ -35,7 +62,7 @@
         }
         ?>
         <tr>
-            <th id="new_entretien" onclick='new_entretien()' colspan='8' style='border-radius:0px 0px 16px 16px'>
+            <th id="new_entretien_btn" onclick='new_entretien(get_services())' colspan='8' style='border-radius:0px 0px 16px 16px;cursor:pointer;'>
                 <div id="new_serv"><svg id='plus' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus" fill="white" stroke="white">
                         <line x1="12" y1="5" x2="12" y2="19" />
                         <line x1="5" y1="12" x2="19" y2="12" />

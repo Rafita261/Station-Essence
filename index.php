@@ -20,42 +20,6 @@ if (isset($_GET['page'])) {
 </head>
 
 <body>
-    <ul class="background">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
     <header>
         <button class="header" onclick="window.location='/Station-Essence/'">Dashboard</button>
         <button class='header' onclick='window.location="/Station-Essence/?page=produit"'>Produits</button>
@@ -66,7 +30,7 @@ if (isset($_GET['page'])) {
     </header>
     <div id="body">
         <?php
-        $pages = ["dashboard", "entree", "produit", "achat","service", "entretien"];
+        $pages = ["dashboard", "entree", "produit", "achat", "service", "entretien"];
         if (in_array($ELEMENT, $pages)) {
             include('Views/' . $ELEMENT . '.php');
         } else {

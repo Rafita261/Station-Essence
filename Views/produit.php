@@ -16,7 +16,7 @@ include('/opt/lampp/htdocs/Station-Essence/Controllers/Produit/list_produit.php'
         <?php } else {
         $i = 1;
         foreach ($produits as $produit) { ?>
-            <tr class='<?php echo "ligne" . $i % 2; ?>' id='<?php echo "produit" . $produit[0]; ?>'>
+            <tr class='<?php echo "ligne" . $i % 2; ?><?php if(($produit[1]=="Pétrole" || $produit[1]=="Essence" || $produit[1]=="Gasoil")&& $produit[2]<10) echo " alert" ?>' id='<?php echo "produit" . $produit[0]; ?>'>
                 <td id='<?php echo "num" . $produit[0]; ?>'><?php echo $produit[0]; ?></td>
                 <td id='<?php echo "design" . $produit[0]; ?>'><?php echo $produit[1]; ?></td>
                 <td id='<?php echo "stock" . $produit[0]; ?>'><?php echo $produit[2]; ?></td>
