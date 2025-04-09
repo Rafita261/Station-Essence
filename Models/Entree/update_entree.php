@@ -17,11 +17,15 @@ function update_entree($num_entree, $new_date_entree, $new_stock_entree, $new_pr
             throw new LogicException("Erreur : Le stock ne peut pas être négatif après la modification.");
         }
         if ($new_product_entree == $num_prod) {
-            $reponse = $pdo->prepare("SELECT SUM(nbr_litre) FROM ACHAT WHERE num_prod=?");
-            $reponse->execute([$num_prod]);
-            $sum_nbr_litre_achat = $reponse->fetch()[0];
+            $reponse = $pdo->prepare("SELECT stock_entree FROM ENTREE WHERE num_entree=?");
+            $reponse->execute([$num_entree]);
+            $last_entry = $reponse->fetch()[0];
 
-            if ($new_stock_entree - $sum_nbr_litre_achat < 0) {
+            $reponse = $pdo->prepare("SELECT stock FROM PRODUIT WHERE num_prod=?");
+            $reponse->execute([$num_prod]);
+            $stock_restant = $reponse->fetch()[0];
+
+            if ($stock_restant-$last_entry+$new_stock_entree < 0) {
                 throw new LogicException("Erreur : Le stock ne peut pas être négatif après la modification.");
             }
         } else {

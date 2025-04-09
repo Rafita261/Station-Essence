@@ -40,27 +40,22 @@
 
 <script>
     function change_date() {
-        a = document.getElementById("date1").value;
-        b = document.getElementById("date2").value;
+        const a = document.getElementById("date1").value;
+        const b = document.getElementById("date2").value;
         window.location = `/Station-Essence/?date1=${a}&date2=${b}`;
     }
-    <?php
-    if (isset($_GET['date1'])) {
-        echo 'a = "' . $_GET['date1'] . '";';
-        echo "a = (a.split('-').reverse());a=new Date(a[1]+'-'+a[0]+'-'+a[2]);";
-    } else {
-        echo 'a=new Date();';
-    }
-    if (isset($_GET['date2'])) {
-        echo 'b = "' . $_GET['date2'] . '";';
-        echo "b = (b.split('-').reverse());b=new Date(b[1]+'-'+b[0]+'-'+b[2]);";
-    } else {
-        echo 'b=new Date();';
-    }
-    ?>;
-    document.getElementById("date1").valueAsDate = a;
-        document.getElementById("date2").valueAsDate = b;
 
+    <?php
+    // Définir une date par défaut au format ISO (YYYY-MM-DD)
+    $date1 = isset($_GET['date1']) ? $_GET['date1'] : date('Y-m-d');
+    $date2 = isset($_GET['date2']) ? $_GET['date2'] : date('Y-m-d');
+
+    // Injecter du JS en toute sécurité
+    echo 'let a = new Date("' . $date1 . '");';
+    echo 'let b = new Date("' . $date2 . '");';
+    ?>
+    document.getElementById("date1").valueAsDate = a;
+    document.getElementById("date2").valueAsDate = b;
     document.addEventListener('DOMContentLoaded', function() {
         const data = <?php echo json_encode($data_chart); ?>;
 
