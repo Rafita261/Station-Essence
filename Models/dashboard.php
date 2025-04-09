@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include('/opt/lampp/htdocs/Station-Essence/Models/db.php');
 
 function get_best_client(){
@@ -19,6 +22,25 @@ function get_recette(){
     global $pdo;
     $query = $pdo->query("SELECT MONTH(E.date_entretien),SUM(S.prix) FROM ENTRETIEN E JOIN SERVICE S ON S.num_serv = E.num_serv GROUP BY MONTH(E.date_entretien) ;");
     return $query;
+}
+
+function serv($num_serv){
+    global $pdo;
+    $query = $pdo->query("SELECT service FROM SERVICE WHERE num_serv = '$num_serv' ;");
+    return $query->fetch()[0];
+}
+
+function nbr_client($date1, $date2){
+    global $pdo;
+    $query = $pdo->prepare("SELECT num_serv,COUNT(*) FROM ENTRETIEN WHERE date_entretien between ? AND ? GROUP BY num_serv;");
+    $query->execute([$date1,$date2]);
+    $result = [];
+    while($data = $query->fetch()){
+        $num_serv = $data[0];
+        $nbr = $data[1] ;
+        $result[] = [serv($num_serv),$nbr];
+    }
+    return $result ;
 }
 
 function getChartData() {

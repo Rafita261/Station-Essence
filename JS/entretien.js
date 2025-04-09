@@ -68,10 +68,48 @@ function delete_entretien(num_entr) {
 function update_entretien(num_entr) {
     nom = document.getElementById(`nom_client${num_entr}`).innerText;
     immat = document.getElementById(`immatriculation${num_entr}`).innerText;
-    date = document.getElementById(`date_entretien${num_entr}`).innerText;
+    Date_entr = document.getElementById(`date_entretien${num_entr}`);
     serv = document.getElementById(`service${num_entr}`).innerText;
     num_serv = Object.keys(get_services())[Object.values(get_services()).indexOf(serv)]
+    let Update = document.getElementById(`update${num_entr}`);
+    let Del = document.getElementById(`delete${num_entr}`);
+    let Container = document.getElementById(`entretien${num_entr}`);
+    Container.style.margin = '0px';
+    date = Date_entr.innerText.split('/').reverse()
+    date = date.join('/');
 
-    document.getElementById(`nom_client${num_entr}`).innerHTML = `<input type="text" name="nom" value="${nom}">`;
-    document.getElementById(`immatriculation${num_entr}`).innerHTML = `<input type="text" name="nom" value="${immat}">`;
+    document.getElementById(`nom_client${num_entr}`).innerHTML = `<input type="text" id="nom" value="${nom}">`;
+    document.getElementById(`immatriculation${num_entr}`).innerHTML = `<input type="text" id="immat" value="${immat}">`;
+    Date_entr.innerHTML = `<input type="date" id="new_Date_entr" Value='${date}' style='width:70%;'>`
+    Update.innerHTML = `<button onclick='update("${num_entr}")' style="background-color:#f2df10;color:#28a745; border-radius:0px;">Modifier</button>`
+    Del.innerHTML = `<button onclick='window.location="/Station-Essence/?page=entretien"' >Annuler</button>`
+    Update.style.borderRadius = '8px';
+
+    a = parseInt(Container.classList[0].split('').reverse().join(''));
+    if (a) color = "rgb(179, 205, 226)"
+    else color = "rgb(247, 249, 250)"
+
+    Update.onmouseover = () => Update.style.backgroundColor = color;
+    Del.onmouseover = () => Del.style.backgroundColor = color;
+    Update.onclick = () => { }
+    Del.onclick = () => { }
+
+    btns = document.querySelectorAll('.edit')
+    
+    for (elem of btns) {
+        elem.onclick = () => { };
+    } 
+    btns = document.querySelectorAll('.delete')
+    
+    for (elem of btns) {
+        elem.onclick = () => { };
+    } 
+}
+
+function update(num_entr) {
+    immat = document.getElementById("immat").value;
+    nom = document.getElementById("nom").value;
+    date_entr = document.getElementById("new_Date_entr").value;
+    date_entr = date_entr.replace(/\-/g, '/');
+    window.location = `/Station-Essence/Controllers/Entretien/update_entretien.php?num_entr=${num_entr}&immat=${immat}&nom_client=${nom}&date_entr=${date_entr}`;
 }

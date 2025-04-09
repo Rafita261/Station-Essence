@@ -10,5 +10,9 @@ $recettes = [];
 while ($data = $reponse->fetch()) {
     $recettes[] = $data;
 }
-
+if (isset($_GET['date1']) && isset($_GET['date2'])) {
+    $nbr_clients = nbr_client($_GET['date1'], $_GET['date2']);
+} else {
+    $nbr_clients = nbr_client(date('Y-m-d'), date('Y-m-d'));
+}
 ?>

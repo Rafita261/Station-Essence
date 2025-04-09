@@ -1,4 +1,9 @@
-<?php require("/opt/lampp/htdocs/Station-Essence/Controllers/Entretien/list_entretien.php"); ?>
+<?php
+        // Activer l'affichage des erreurs pour le débogage
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+require("/opt/lampp/htdocs/Station-Essence/Controllers/Entretien/list_entretien.php"); ?>
 <?php require("/opt/lampp/htdocs/Station-Essence/Controllers/Service/list_service.php"); ?>
 <div style="display: flex;flex-direction:row;">
     <h1 style="margin-left: 30%">Liste des entretiens</h1>

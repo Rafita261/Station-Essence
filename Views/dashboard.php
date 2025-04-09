@@ -15,7 +15,6 @@
         height: auto !important;
     }
 </style>
-
 <h1>Dashboard</h1>
 <h2>
     Récette total accumulé par la station : <?php echo $recette; ?> Ar
@@ -29,8 +28,39 @@
     <li><?php echo $best_clients[2][0] ?></li>
     <li><?php echo $best_clients[3][0] ?></li>
     <li><?php echo $best_clients[4][0] ?></li>
-</ol>
+</ol><br><br>
+<h3 style="display:flex;justify-content:center;">Le nombre de clients pour chaque entretiens entre <input id="date1" type="date" style="width: 100px;margin-bottom:15px;margin-top:-15px;height: 20px;"> et <input id="date2" type="date" style="width: 100px;margin-bottom:15px;margin-top:-15px;height: 20px;"> <button onclick="change_date()" style="width: 200px;margin-top:-20px;">Modifier la date</button> </h3>
+<ul>
+    <?php
+    foreach ($nbr_clients as $entr) {
+        echo "<li>" . $entr[0] . " : " . $entr[1] . "</li>";
+    }
+    ?>
+</ul>
+
 <script>
+    function change_date() {
+        a = document.getElementById("date1").value;
+        b = document.getElementById("date2").value;
+        window.location = `/Station-Essence/?date1=${a}&date2=${b}`;
+    }
+    <?php
+    if (isset($_GET['date1'])) {
+        echo 'a = "' . $_GET['date1'] . '";';
+        echo "a = (a.split('-').reverse());a=new Date(a[1]+'-'+a[0]+'-'+a[2]);";
+    } else {
+        echo 'a=new Date();';
+    }
+    if (isset($_GET['date2'])) {
+        echo 'b = "' . $_GET['date2'] . '";';
+        echo "b = (b.split('-').reverse());b=new Date(b[1]+'-'+b[0]+'-'+b[2]);";
+    } else {
+        echo 'b=new Date();';
+    }
+    ?>;
+    document.getElementById("date1").valueAsDate = a;
+        document.getElementById("date2").valueAsDate = b;
+
     document.addEventListener('DOMContentLoaded', function() {
         const data = <?php echo json_encode($data_chart); ?>;
 
@@ -102,12 +132,12 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-        d = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+        d = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', "Août", 'Septembre', 'Octobre', 'Novembre', 'Décembre']
         var ctx = document.getElementById('myChart2').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: [d[<?php echo $recettes[0][0] ?> - 1], d[<?php echo $recettes[1][0] ?> - 1], d[<?php echo $recettes[2][0] ?> - 1], d[<?php echo $recettes[3][0] ?> - 1], d[<?php echo $recettes[0][4] ?> - 1]],
+                labels: [d[<?php echo $recettes[0][0] ?> - 1], d[<?php echo $recettes[1][0] ?> - 1], d[<?php echo $recettes[2][0] ?> - 1], d[<?php echo $recettes[3][0] ?> - 1], d[<?php echo $recettes[4][0] ?> - 1]],
                 datasets: [{
                     label: 'Recette (en Ar)',
                     data: [<?php echo $recettes[0][1] ?>, <?php echo $recettes[1][1] ?>, <?php echo $recettes[2][1] ?>, <?php echo $recettes[3][1] ?>, <?php echo $recettes[4][1] ?>],

@@ -16,4 +16,18 @@ function last_num(){
         return 1;
     }
 }
+function get_prix($num_serv)
+{
+    global $pdo;
+
+    $reponse = $pdo->query("SELECT prix FROM SERVICE WHERE num_serv = '$num_serv';");
+    return $reponse->fetch()[0];
+}
+function get_service_name($num_serv)
+{
+    global $pdo;
+
+    $reponse = $pdo->query("SELECT service FROM SERVICE WHERE num_serv = '$num_serv';");
+    return $reponse->fetch()[0];
+}
 ?>
